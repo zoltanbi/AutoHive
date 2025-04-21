@@ -1,17 +1,8 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    $person = [
-        "name" => "John",
-        "email" => "example@test.com"
-    ];
-    dump($person);
+Route::get('/', [HomeController::class, 'index']) -> name('home');
 
-    return view('welcome');
-});
-
-Route::get('/about', function () {
-    return view('about');
-});
+Route::view('/about', 'about')->name('about');
